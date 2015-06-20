@@ -1,0 +1,19 @@
+{
+  "name": "firepom",
+  "version": "0.1.0",
+  "authors": [
+    "Camilo Payan <cpayan@gmail.com>"
+  ],
+  "description": "A firebase-based pomodoro app",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "firebase": "~2.2.7"
+  }
+}
