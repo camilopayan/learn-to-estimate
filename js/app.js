@@ -21,15 +21,16 @@ var app = angular.module("FirePom", [])
 		};
 		
 		$scope.pom.cancel = function(){
+			clearTimeout();
 			$scope.pom.state = "POMODORO";
 			$scope.pom.timeLeft = settings.pomTime * 1000;
-			clearTimeout();
 		};
 
 		var finishPhase = function(){
 			switch ( $scope.pom.state ){
 				case "POMODORO":
-					if ($scope.pom.count % 4 === 0) {
+					$scope.pom.count++;
+					if ($scope.pom.count % 4 === 0 && $scope.pom.count > 0) {
 						$scope.pom.state = "LONGBREAK";
 						$scope.pom.timeLeft = settings.longRestTime * 1000;
 						break;
@@ -52,12 +53,11 @@ var app = angular.module("FirePom", [])
 				finishPhase();
 				if($scope.pom.state === "POMODORO") {
 					clearTimeout();
-				} else {
 					return;
 				}
 			}
 
-			$scope.timeoutId = $timeout( tick, 1000 );
+			$scope.pom.timeoutId = $timeout( tick, 1000 );
 		};
 
 		var clearTimeout = function(){
