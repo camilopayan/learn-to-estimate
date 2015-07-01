@@ -1,14 +1,69 @@
 var app = angular.module("FirePom", [])
 // Factory to keep the timer state
-.controller('timerController', ['$scope', '$interval',
-	function($scope, $interval){
-		$scope.timer = {};		
-		$scope.timer.defaults = {};		
-		$scope.timer.defaults.pomTime = 1500;
-		$scope.timer.defaults.shortRestTime = 30;
-		$scope.timer.defaults.longRestTime = 900;
-		$scope.timer.state = null;
-		$scope.timer.timeLeft = $scope.timer.defaults.pomTime;
+.controller('timerController', ['$scope', '$timeout',
+	function($scope, $timeout){
+		$scope.pom = {};		
+		settings = {};		
+		settings.pomTime = 5;
+		settings.shortRestTime = 3;
+		settings.longRestTime = 3;
+		$scope.pom.state = "POMODORO";
+		$scope.pom.count = 0;
+		$scope.pom.startTime = settings.pomTime;
+		$scope.pom.timeoutId = null;
+		//Kept in milliseconds.
+		$scope.pom.timeLeft = settings.pomTime * 1000;
+
+
+		$scope.pom.start = function(){
+			$scope.pom.state = "POMODORO";
+			tick();
+		};
+		
+		$scope.pom.cancel = function(){
+			$scope.pom.state = "POMODORO";
+			$scope.pom.timeLeft = settings.pomTime * 1000;
+			clearTimeout();
+		};
+
+		var finishPhase = function(){
+			switch ( $scope.pom.state ){
+				case "POMODORO":
+					if ($scope.pom.count % 4 === 0) {
+						$scope.pom.state = "LONGBREAK";
+						$scope.pom.timeLeft = settings.longRestTime * 1000;
+						break;
+					}
+					$scope.pom.state = "SHORTBREAK";
+					$scope.pom.timeLeft = settings.shortRestTime * 1000;
+					break;
+				case "LONGBREAK":
+				case "SHORTBREAK":
+					$scope.pom.state = "POMODORO";
+					$scope.pom.timeLeft = settings.pomTime * 1000;
+					break;
+			}
+		};
+
+		var tick = function (){
+			$scope.pom.timeLeft -= 1000;
+
+			if($scope.pom.timeLeft <= 0){
+				finishPhase();
+				if($scope.pom.state === "POMODORO") {
+					clearTimeout();
+				} else {
+					return;
+				}
+			}
+
+			$scope.timeoutId = $timeout( tick, 1000 );
+		};
+
+		var clearTimeout = function(){
+			$timeout.cancel( $scope.pom.timeoutId );
+			$scope.pom.timeoutId = null;
+		};
 
 	}]
 )
