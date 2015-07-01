@@ -15,11 +15,13 @@ var app = angular.module("FirePom", [])
 
 
 // Seconds to Minutes:Seconds filter
-.filter('secondsToString', 
+.filter('timeify', 
 	function() {
 		return function(input){
-			var s = input % 60;
-			return Math.floor(input/60) + ':' + ( s < 10 ? ('0'+s) : s );
+			var time  = input/1000;
+			m = time / 60;
+			s = time  % 60;
+			return Math.floor(m) + ':' + ( s < 10 ? ('0'+s) : s );
 		};
 	}
 );
