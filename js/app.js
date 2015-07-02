@@ -1,6 +1,6 @@
-var app = angular.module("FirePom", [])
+var app = angular.module("EstimatePom", [])
 // Factory to keep the timer state
-.controller('timerController', ['$scope', '$timeout',
+.controller('TimerController', ['$scope', '$timeout',
 	function($scope, $timeout){
 		$scope.pom = {};		
 		settings = {};		
