@@ -6,12 +6,12 @@
 	
 </head>
 <body>
-	<div id="timer" data-ng-controller="TimerController">
-		<div id="time">{{ pom.timeLeft | timeify }}</div>
-		<div>Current phase: {{ pom.state ? pom.state : "STOPPED" }}</div>
-		<div><a ng-click="pom.start()">Start</a> <a ng-click="pom.cancel()">Cancel</a></div>
+	<div id="timer" data-ng-controller="TimerController as tc">
+		<div id="time">{{ tc.timeLeft | timeify }}</div>
+		<div>Current phase: {{ tc.phase ? tc.phase : "STOPPED" }}</div>
+		<div><a ng-click="tc.start()">Start</a> <a ng-click="tc.cancel()">Cancel</a></div>
 		<div>
-			Poms done: {{ pom.count }}
+			Poms done: {{ tc.poms }}
 		</div>
 	</div>
 
@@ -21,5 +21,7 @@
 
 
 <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/services/pomTimerService.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/timer/timerController.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
