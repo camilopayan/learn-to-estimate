@@ -1,4 +1,4 @@
-var app = angular.module("EstimatePom", []);
+var app = angular.module("EstimatePom", ['ngSanitize']);
 
 // Seconds to Minutes:Seconds filter
 app.filter('timeify', 
@@ -10,3 +10,13 @@ app.filter('timeify',
 		};
 	}
 );
+
+app.filter('pomify', function(){
+	return function( numPoms ){
+		o = "";
+		for( i = 0; i< numPoms; i++ ){
+			o += '<i class="fa fa-check-circle"></i>';
+		}
+		return o;
+	};
+});
