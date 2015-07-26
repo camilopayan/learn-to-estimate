@@ -2,9 +2,9 @@ app.factory('PomTimer',
 [       '$timeout', '$log', 
 function($timeout,   $log){
 	var settings = {};		
-	settings.pomTime = 5;
-	settings.shortRestTime = 3;
-	settings.longRestTime = 3;
+	settings.pomTime = 25*60;
+	settings.shortRestTime = 5*60;
+	settings.longRestTime = 15*60;
 
 	var pom = {};
 	pom.state = "POMODORO";
