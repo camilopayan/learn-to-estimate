@@ -4,26 +4,50 @@
 	<meta charset="utf-8">
 	<title>Time Estimation! Pom! Tomato!</title>
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/styles.css" />
 	
 </head>
 <body>
-	<div id="timer" data-ng-controller="TimerController as tc">
-		<div id="time">{{ tc.timeLeft | timeify }}</div>
-		<div>Current phase: {{ tc.phase ? tc.phase : "STOPPED" }}</div>
-		<div><a ng-click="tc.start()">Start</a> <a ng-click="tc.cancel()">Cancel</a></div>
-		<div>
-			Poms done: {{ tc.poms }}
+<div class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Learn to Estimate</a>
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li><a href="#">About</a></li>
+			</ul>
 		</div>
 	</div>
-
+	
+</div>
+<div id="timer" data-ng-controller="TimerController as tc">
+	<div id="time" class="{{ tc.classStatus }}">
+		{{ tc.timeLeft | timeify }}</div>
+	<div class="row">
+		<a ng-click="tc.start()" class="btn btn-default btn-large col-md-5 start-btn">Start</a>
+		<a ng-click="tc.cancel()" class="btn btn-default btn-large col-md-5 col-md-offset-1 cancel-btn">Cancel</a>
+	</div>
+	<div class="pom-checks" ng-bind-html="tc.poms  | pomify ">
+	</div>
+</div>
 	
 <!-- AngularJS -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-sanitize.min.js"></script>
 
 <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/services/pomTimerService.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/timer/timerController.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

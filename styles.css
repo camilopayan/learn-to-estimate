@@ -1,0 +1,37 @@
+body {
+	padding-top: 70px;
+}
+
+#time{
+	font-size: 3em;
+	text-align: center;
+	font-weight: bolder;
+}
+
+#time.running.pom{
+	color: #d9534f;
+}
+
+#time.running.break{
+	color: #337ab7;
+}
+
+#timer{
+	margin: 0 auto;
+	width: 320px;
+}
+
+#timer .pom-checks{
+	color: red;
+	font-size: 48px;
+	letter-spacing: 20px;
+}
+
+#timer .start-btn{
+	background-color: #337ab7;
+	color: #fff;
+}
+#timer .cancel-btn{
+	background-color: #d9534f;
+	color: #fff;
+}
