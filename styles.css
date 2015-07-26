@@ -1,11 +1,24 @@
-body {
-	padding-top: 70px;
+body{
+	background-image: url('img/dimension.png');
+}
+#wrapper{
+	background: white;
+	width: 320px;
+	margin: 0 auto;
+}
+header{
+	background-color: #eee;
+	padding: 15px;
+}
+header h1{
+	margin: 0;
 }
 
 #time{
 	font-size: 3em;
 	text-align: center;
 	font-weight: bolder;
+	margin: 1.3em;
 }
 
 #time.running.pom{
@@ -16,22 +29,25 @@ body {
 	color: #337ab7;
 }
 
-#timer{
-	margin: 0 auto;
-	width: 320px;
-}
-
 #timer .pom-checks{
 	color: red;
 	font-size: 48px;
 	letter-spacing: 20px;
+	padding: 15px;
 }
 
 #timer .start-btn{
 	background-color: #337ab7;
 	color: #fff;
+	width: 45%;
+	margin: 0 auto;
 }
 #timer .cancel-btn{
 	background-color: #d9534f;
 	color: #fff;
+	width: 45%;
+	margin-left: 5%;
+}
+#content{
+	padding: 15px;
 }
