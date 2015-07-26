@@ -75,6 +75,13 @@ function($timeout,   $log){
 		clearTimeout();
 		pom.state = "POMODORO";
 		pom.timeLeft = settings.pomTime;
+		angular.forEach(callbacks.tick, function(callback){
+			callback();
+		});
+
+		angular.forEach(callbacks.phase, function(callback){
+			callback();
+		});
 	};
 	PomTimer.registerTickCallback = function( callback ){
 		callbacks.tick.push(callback);
