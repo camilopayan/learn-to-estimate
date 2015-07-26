@@ -4,6 +4,7 @@ app.controller('TimerController', ['PomTimer',
 		var tc = this;
 		tc.timeLeft = 0;
 		tc.phase = "POMODORO";
+		tc.classStatus = null;
 		tc.poms = 0;
 
 		function tickCallback(){
@@ -14,11 +15,17 @@ app.controller('TimerController', ['PomTimer',
 
 		PomTimer.registerPhaseCallback(function(){
 			tc.phase = PomTimer.getPhase();
+			if(tc.phase === "LONGBREAK" || tc.phase === "SHORTBREAK"){
+				tc.classStatus = "running break";
+			} else {
+				tc.classStatus = "";
+			}
 			tc.poms = PomTimer.getPomCount();
 		});
 
 		tc.start = function(){
 			PomTimer.startTimer();
+			tc.classStatus = "running pom";
 		};
 		
 		tc.cancel = function(){
