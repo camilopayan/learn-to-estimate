@@ -6,37 +6,37 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="styles.css" />
-	
 </head>
 <body>
-<div class="navbar navbar-default navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">Learn to Estimate</a>
-		</div>
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li><a href="#">About</a></li>
-			</ul>
-		</div>
-	</div>
-	
-</div>
+<a href="https://github.com/camilopayan/learn-to-estimate"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+<div id="wrapper">
+		
+<header>
+	<h1>Learn to Estimate!</h1>
+</header>
 <div id="timer" data-ng-controller="TimerController as tc">
 	<div id="time" class="{{ tc.classStatus }}">
 		{{ tc.timeLeft | timeify }}</div>
-	<div class="row">
-		<a ng-click="tc.start()" class="btn btn-default btn-large col-md-5 start-btn">Start</a>
-		<a ng-click="tc.cancel()" class="btn btn-default btn-large col-md-5 col-md-offset-1 cancel-btn">Cancel</a>
+	<div >
+		<a ng-click="tc.start()" class="btn btn-default start-btn">Start</a>
+		<a ng-click="tc.cancel()" class="btn btn-default cancel-btn">Cancel</a>
 	</div>
 	<div class="pom-checks" ng-bind-html="tc.poms  | pomify ">
 	</div>
+</div>
+
+<div id="content">
+	<h2>What is this?</h2>
+	<p>This is a pomodoro timer, a pretty common productivity tool. This one was inspired by a post by <a href="https://rachelandrew.co.uk/archives/2014/06/20/how-to-become-good-at-estimating-time/">Rachel Andrews</a> about using the pomodoro method to refine how well you estimate time.</p>
+	<h2>What's next?</h2>
+	<p>The plan is to add on more features, such as:</p>
+	<ul>
+		<li>Local Storage so you can keep a history</li>
+		<li>Stats page to view that history with nice charts</li>
+		<li>An integrated todo list that takes in estimates (in numbers of pomodoros)</li>
+		<li>Increased stats to see how well your estimates match up with how long you actually took, as well as whether or not you're improving.</li>
+	</ul>
+</div>
 </div>
 	
 <!-- AngularJS -->
